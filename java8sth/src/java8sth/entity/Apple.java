@@ -9,6 +9,8 @@
   
 package java8sth.entity;
 
+import java.util.Objects;
+
 import java8sth.utils.IntUtils;
 import java8sth.utils.StrUtils;
 
@@ -22,7 +24,7 @@ import java8sth.utils.StrUtils;
  * @since    JDK 1.8 
  * @see       
  */
-public class Apple {
+public class Apple implements Comparable<Apple>{
 	
 	private String name;
 	private String color;
@@ -61,6 +63,12 @@ public class Apple {
 	@Override
 	public String toString() {
 		return "Apple [name=" + name + ", color=" + color + ", weight=" + weight + "]";
+	}
+
+	@Override
+	public int compareTo(Apple o) {
+		Objects.requireNonNull(o);
+		return this.getWeight()-o.getWeight();
 	}
 
 }
